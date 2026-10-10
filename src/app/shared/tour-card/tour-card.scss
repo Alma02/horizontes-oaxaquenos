@@ -1,0 +1,97 @@
+$mobile-max: 599px;
+$tablet-range: 600px 959px;
+$desktop-min: 960px;
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: $mobile-max) { @content; }
+  } @else if $breakpoint == tablet {
+    @media (min-width: 600px) and (max-width: 959px) { @content; }
+  } @else if $breakpoint == desktop {
+    @media (min-width: $desktop-min) { @content; }
+  }
+}
+
+.tour-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: #fff;
+  border-radius: 1.125rem;
+  overflow: hidden;
+  box-shadow: 0 0.625rem 1.875rem rgba(39, 24, 12, 0.08);
+  border: 0.0625rem solid #f1dfce;
+}
+
+.tour-card__image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.tour-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.25rem;
+}
+
+.tour-card__meta {
+  color: #a25a2a;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.tour-card__date {
+  display: block;
+  margin: 0;
+  color: #775e4d;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.tour-card__content h3 {
+  margin: 0;
+  color: #2a1b11;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+}
+
+.tour-card__content p {
+  margin: 0;
+  color: #594132;
+  line-height: 1.6;
+  font-size: 0.98rem;
+}
+
+.tour-card__details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 0.0625rem solid #f0e4d8;
+}
+
+.tour-card__details strong {
+  color: #2d5a31;
+  font-size: 1.15rem;
+}
+
+.tour-card__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 2.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  background: #9c5f2f;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}

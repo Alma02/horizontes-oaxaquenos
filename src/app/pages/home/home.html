@@ -1,0 +1,23 @@
+<section class="hero">
+  <div class="hero__content">
+    <p class="eyebrow">Descubre Oaxaca</p>
+    <h1>Experiencias que cuentan la historia viva de Oaxaca.</h1>
+    <p class="hero__text">
+      Tours guiados con cultura, emoción y paisajes inolvidables en cada rincón del estado.
+    </p>
+    <a routerLink="/tours" class="primary-button">Ver todos los tours</a>
+  </div>
+</section>
+
+<section class="featured">
+  <div class="section-heading">
+    <p class="eyebrow">Tours destacados</p>
+    <h2>Escoge tu próxima aventura</h2>
+  </div>
+
+  <div class="tour-grid">
+    @for (tour of tours; track tour.slug) {
+      <app-tour-card [tour]="tour" />
+    }
+  </div>
+</section>

@@ -1,0 +1,117 @@
+$mobile-max: 599px;
+$desktop-min: 960px;
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: $mobile-max) { @content; }
+  } @else if $breakpoint == desktop {
+    @media (min-width: $desktop-min) { @content; }
+  } @else if $breakpoint == tablet {
+    @media (min-width: 600px) and (max-width: 959px) { @content; }
+  }
+}
+
+.hero {
+  position: relative;
+  min-height: 26rem;
+  display: flex;
+  align-items: center;
+  padding: 2.5rem 1.25rem;
+  background:
+    linear-gradient(135deg, rgba(38, 25, 18, 0.78), rgba(149, 87, 36, 0.7)),
+    url('/assets/images/home.jpeg') center/cover no-repeat;
+    // url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+  color: #fffaf5;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: auto -8rem -7rem auto;
+  width: 16rem;
+  height: 16rem;
+  border-radius: 50%;
+  background: rgba(255, 201, 125, 0.14);
+  filter: blur(1.25rem);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 43.75rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #f6d5a1;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 8vw, 4.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.hero__text {
+  margin: 1rem 0 2rem;
+  max-width: 35rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #fdf5eb, #f7cf9d);
+  color: #402b1d;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 0.75rem 1.5rem rgba(35, 20, 10, 0.18);
+}
+
+.featured {
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+.section-heading {
+  margin-bottom: 1.5rem;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: #2a1d12;
+  font-size: clamp(1.6rem, 5vw, 2.7rem);
+}
+
+.tour-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@include respond-to(tablet) {
+  .tour-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@include respond-to(desktop) {
+  .featured {
+    padding: 3rem 2rem 4rem;
+  }
+
+  .tour-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

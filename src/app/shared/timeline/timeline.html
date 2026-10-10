@@ -1,0 +1,11 @@
+<ol class="timeline" aria-label="Cronología del tour">
+  @for (parada of paradas(); track parada.nombre) {
+    <li class="timeline__item">
+      <div class="timeline__dot" aria-hidden="true"></div>
+      <div class="timeline__content">
+        <h4>{{ parada.nombre }}</h4>
+        <p>{{ parada.descripcion }}</p>
+      </div>
+    </li>
+  }
+</ol>

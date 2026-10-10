@@ -1,0 +1,61 @@
+$mobile-max: 599px;
+$desktop-min: 960px;
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: $mobile-max) { @content; }
+  } @else if $breakpoint == desktop {
+    @media (min-width: $desktop-min) { @content; }
+  } @else if $breakpoint == tablet {
+    @media (min-width: 600px) and (max-width: 959px) { @content; }
+  }
+}
+
+.page-shell {
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+.section-heading {
+  margin-bottom: 1.5rem;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #a25a2a;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
+.section-heading h1 {
+  margin: 0.6rem 0 0;
+  color: #2a1d12;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+}
+
+.contact-card {
+  max-width: 38.75rem;
+  background: #fffaf4;
+  border: 0.0625rem solid #f0e0cd;
+  border-radius: 1.125rem;
+  padding: 1.5rem;
+  box-shadow: 0 0.5rem 1.25rem rgba(58, 32, 15, 0.04);
+}
+
+.contact-card p {
+  margin: 0 0 0.9rem;
+  color: #514235;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.contact-card p:last-child {
+  margin-bottom: 0;
+}
+
+@include respond-to(desktop) {
+  .page-shell {
+    padding: 3rem 2rem 4rem;
+  }
+}

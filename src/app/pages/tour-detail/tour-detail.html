@@ -1,0 +1,84 @@
+@if (tour) {
+  <article class="tour-detail">
+    <header class="tour-detail__header">
+      <img
+        [ngSrc]="tour.imagenPortada"
+        [alt]="tour.nombre"
+        width="1200"
+        height="700"
+        priority
+        class="tour-detail__cover"
+      />
+
+      <div class="tour-detail__intro">
+        <p class="eyebrow">Tour destacado</p>
+        <h1>{{ tour.nombre }}</h1>
+        <p>{{ tour.descripcionLarga }}</p>
+
+        <div class="tour-detail__meta">
+          <!-- <span>{{ tour.duracionHoras }} hrs</span> -->
+          <!-- <span>{{ tour.horarioSalida }}</span> -->
+          <span>{{ tour.puntoEncuentro }}</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="tour-detail__content">
+      <div class="tour-detail__info">
+        <h2>Sobre este tour</h2>
+        <p>{{ tour.descripcionLarga }}</p>
+
+        <div class="tour-detail__lists">
+          <div>
+            <h3>Incluye</h3>
+            <ul>
+              @for (item of tour.incluye; track item) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          </div>
+
+          <div>
+            <h3>No incluye</h3>
+            <ul>
+              @for (item of tour.noIncluye; track item) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <aside class="tour-detail__card">
+        @if (tour.esCotizable) {
+          <strong>¡Cotiza aquí!</strong>
+        } @else {
+          <span class="price-label">Desde</span>
+          <strong>${{ tour.precio }}</strong>
+        }
+        <button type="button" (click)="reservarTour()">Reservar ahora</button>
+      </aside>
+    </section>
+    @if (tour.paradas.length > 0) {
+    <section class="tour-detail__timeline">
+      <h2>Recorrido</h2>
+      <app-timeline [paradas]="tour.paradas" />
+    </section>
+    }
+    @if (tour.galeria.length > 0) {
+    <section class="tour-detail__gallery" >
+      <h2>Galería</h2>
+      <div class="gallery-grid">
+        @for (image of tour.galeria; track image) {
+          <img [ngSrc]="image" [alt]="tour.nombre + ' galería'" width="600" height="400" class="gallery-item" />
+        }
+      </div>
+    </section>
+    }
+  </article>
+} @else {
+  <section class="not-found">
+    <h1>Tour no encontrado</h1>
+    <p>El recorrido solicitado no existe o ya no está disponible.</p>
+  </section>
+}

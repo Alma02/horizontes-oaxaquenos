@@ -1,0 +1,26 @@
+<article class="tour-card">
+  <img
+    [ngSrc]="tour().imagenPortada"
+    [alt]="tour().nombre"
+    width="800"
+    height="560"
+    priority
+    class="tour-card__image"
+  />
+
+  <div class="tour-card__content">
+    @if(tour().duracionHoras) {
+      <span class="tour-card__meta">{{ tour().duracionHoras }} horas</span>
+    }
+    <h3>{{ tour().nombre }}</h3>
+    <span class="tour-card__date">{{ tour().fecha }}</span>
+    <p>{{ tour().descripcionCorta }}</p>
+
+    <div class="tour-card__details">
+      <strong>${{ tour().precio }}</strong>
+      <span>{{ tour().horarioSalida }}</span>
+    </div>
+
+    <a [routerLink]="'/tours/' + tour().slug" class="tour-card__link">Ver tour</a>
+  </div>
+</article>
